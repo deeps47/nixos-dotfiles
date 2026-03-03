@@ -1,11 +1,24 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Display manager
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # --- Display Manager ---
+  # Disable SDDM completely
+  services.displayManager.sddm.enable = false;
+  services.displayManager.sddm.wayland.enable = false;
 
-  # Polkit
+  # Enable Greetd with tuigreet
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        # Launch tuigreet, show the time, and tell it to run Hyprland after you log in
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
+  # --- Polkit & Portals ---
   security.polkit.enable = true;
 
   xdg.portal.enable = true;
@@ -16,16 +29,16 @@
     xdg-desktop-portal-gtk
   ];
 
-  # Optional: prefer gtk for default handler choices when appropriate
-  #services.xdg.portal.config.common.default = [ "gtk" ];
-
-  # GNOME Keyring / libsecret available system-wide (PAM unlock from DM)
+  # --- Keyring & Security ---
+  # GNOME Keyring / libsecret available system-wide
   environment.systemPackages = with pkgs; [
     gnome-keyring
     libsecret
   ];
 
-  # Integrate keyring with PAM/login manager
+  # Enable the GNOME Keyring daemon
   services.gnome.gnome-keyring.enable = true;
-}
 
+  # CRITICAL: Tell PAM to let greetd automatically unlock your GNOME Keyring when you type your password
+  security.pam.services.greetd.enableGnomeKeyring = true;
+}
