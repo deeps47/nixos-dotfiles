@@ -32,6 +32,8 @@
 
   programs.firefox.enable = true;
 
+  services.hardware.openrgb.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
