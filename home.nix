@@ -24,14 +24,14 @@ in
   home.stateVersion = "25.11";
   programs.bash = {
     enable = true;
-    shellAliases = {
-      btw = "echo i use nixos btw";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw";
-      vim = "nvim";
-    };
+    initExtra = ''
+      if [ -f ~/nixos-dotfiles/config/aliases.sh ]; then
+        . ~/nixos-dotfiles/config/aliases.sh
+      fi
+    '';
     profileExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          exec hyprland
+          exec start-hyprland
       fi
     '';
   };
