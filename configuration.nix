@@ -6,7 +6,10 @@
       ./hardware-configuration.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Fix for ITE RGB Controller boot delay (Error -110)
+  boot.kernelParams = [ "usbcore.quirks=048d:5702:gk" ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
