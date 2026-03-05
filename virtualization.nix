@@ -19,7 +19,7 @@
   };
 
   # Add user to libvirtd group
-  users.users.goku.extraGroups = [ "libvirtd" "kvm"];
+  users.users.goku.extraGroups = [ "libvirtd" "kvm" "video" "render" ];
 
   programs.virt-manager.enable = true;
 
