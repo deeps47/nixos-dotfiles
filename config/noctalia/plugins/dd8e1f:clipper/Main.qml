@@ -57,7 +57,7 @@ Item {
     // FileView for pinned.json
     FileView {
         id: pinnedFile
-        path: Quickshell.env("HOME") + "/.config/noctalia/plugins/clipper/pinned.json"
+        path: Quickshell.env("HOME") + "/.config/noctalia/plugins/dd8e1f:clipper/pinned.json"
         watchChanges: true
 
         onLoaded: {
@@ -72,7 +72,7 @@ Item {
     }
 
     // NoteCards directory path
-    readonly property string noteCardsDir: Quickshell.env("HOME") + "/.config/noctalia/plugins/clipper/notecards"
+    readonly property string noteCardsDir: Quickshell.env("HOME") + "/.config/noctalia/plugins/dd8e1f:clipper/notecards"
 
     // Process to load all notecards from directory
     Process {
@@ -349,7 +349,7 @@ Item {
         // Qt.btoa() produces valid base64 (A-Z, a-z, 0-9, +, /, =) - no shell metacharacters
         // File path is constant, not user-controlled
         const base64 = Qt.btoa(json);
-        const filePath = Quickshell.env("HOME") + "/.config/noctalia/plugins/clipper/pinned.json";
+        const filePath = Quickshell.env("HOME") + "/.config/noctalia/plugins/dd8e1f:clipper/pinned.json";
 
         Quickshell.execDetached(["sh", "-c", `echo "${base64}" | base64 -d > "${filePath}"`]);
     }
@@ -1136,7 +1136,7 @@ Item {
         }
 
         // Create empty pinned.json if it doesn't exist
-        const pinnedPath = Quickshell.env("HOME") + "/.config/noctalia/plugins/clipper/pinned.json";
+        const pinnedPath = Quickshell.env("HOME") + "/.config/noctalia/plugins/dd8e1f:clipper/pinned.json";
         Quickshell.execDetached([
             "sh", "-c",
             `[ -f "${pinnedPath}" ] || echo '{"items":[]}' > "${pinnedPath}"`

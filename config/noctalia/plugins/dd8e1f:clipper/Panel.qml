@@ -15,13 +15,20 @@ Item {
     // Plugin API (injected by PluginPanelSlot)
     property var pluginApi: null
 
+    // Helper to auto-paste
+    function performPasteAction() {
+        // Check if explicitly disabled (false), otherwise default to true
+        if (root.pluginApi?.pluginSettings?.enableAutoPaste !== false) {
+            // Wait 200ms for focus to switch, then simulate Ctrl+V
+            Quickshell.execDetached(["sh", "-c", "sleep 0.4 && wtype -M ctrl -M shift -k v -m shift -m ctrl"]);
+        }
+    }
+
     // Screen context - store reference for child components
     property var currentScreen: screen
 
     // Track currently open ToDo context menu
     property var activeContextMenu: null
-
-
 
     // Refresh clipboard list and load notecards when panel becomes visible
     // Save notecards when panel is closed
@@ -109,6 +116,7 @@ Item {
                 pluginApi?.mainInstance?.copyToClipboard(item.id);
                 if (pluginApi) {
                     pluginApi.closePanel(screen);
+                    root.performPasteAction();
                 }
             }
         }
@@ -456,6 +464,7 @@ Item {
                             root.pluginApi?.mainInstance?.copyToClipboard(item.id);
                             if (root.pluginApi) {
                                 root.pluginApi.closePanel(screen);
+                                root.performPasteAction();
                             }
                         }
                     }
@@ -529,6 +538,7 @@ Item {
                         root.pluginApi?.mainInstance?.copyToClipboard(clipboardId);
                         if (root.pluginApi) {
                             root.pluginApi.closePanel(screen);
+                            root.performPasteAction();
                         }
                     }
 

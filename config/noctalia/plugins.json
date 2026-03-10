@@ -12,13 +12,9 @@
         }
     ],
     "states": {
-        "clipper": {
-            "enabled": false,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
         "dd8e1f:clipper": {
             "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+            "sourceUrl": "https://github.com/deeps47/noctalia-plugins"
         }
     },
     "version": 2

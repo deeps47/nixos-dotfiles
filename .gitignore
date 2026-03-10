@@ -1,14 +1,14 @@
 hardware-configuration.nix
 
 # Unnecessary Clutter
-config/noctalia/plugins/clipper/Assets
-config/noctalia/plugins/clipper/CHANGELOG*.md
-config/noctalia/plugins/clipper/CODE_REVIEW*.md
-config/noctalia/plugins/clipper/README.md
-config/noctalia/plugins/clipper/RELEASE_NOTES*.md
+config/noctalia/plugins/dd8e1f:clipper/Assets
+config/noctalia/plugins/dd8e1f:clipper/CHANGELOG*.md
+config/noctalia/plugins/dd8e1f:clipper/CODE_REVIEW*.md
+config/noctalia/plugins/dd8e1f:clipper/README.md
+config/noctalia/plugins/dd8e1f:clipper/RELEASE_NOTES*.md
 
 # Ignore all json files in locales
-config/noctalia/plugins/clipper/i18n/*.json
+config/noctalia/plugins/dd8e1f:clipper/i18n/*.json
 
 # But do NOT ignore en.json
-!config/noctalia/plugins/clipper/i18n/en.json
+!config/noctalia/plugins/dd8e1f:clipper/i18n/en.json

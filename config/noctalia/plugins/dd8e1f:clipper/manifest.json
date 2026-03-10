@@ -21,6 +21,7 @@
   "metadata": {
     "defaultSettings": {
       "position": "Bottom",
+      "enableAutoPaste": true,
       "enableTodoIntegration": false,
       "pincardsEnabled": true,
       "notecardsEnabled": true,
