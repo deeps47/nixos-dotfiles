@@ -17,6 +17,7 @@ in
     ./modules/theme.nix
     ./git.nix
     ./noctaliahm.nix
+    ./overrides/tribler.nix
   ];
 
   home.username = "goku";
