@@ -15,6 +15,7 @@ in
 {
   imports = [
     ./modules/theme.nix
+    ./modules/web-apps.nix
     ./git.nix
     ./noctaliahm.nix
     ./overrides/tribler.nix
