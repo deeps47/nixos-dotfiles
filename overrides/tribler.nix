@@ -65,13 +65,9 @@ let
     installPhase = ''
             mkdir -p $out
             cp -r usr/* $out/
-      
-            for desktop_file in $out/share/applications/*.desktop; do
-              if [ -f "$desktop_file" ]; then
-                sed -i "s|/usr/bin/tribler|$out/bin/tribler|g" "$desktop_file"
-                sed -i "s|Exec=tribler|Exec=$out/bin/tribler|g" "$desktop_file"
-              fi
-            done
+
+            # REMOVE the original desktop files so they don't conflict
+            rm -rf $out/share/applications
 
             cat > $out/bin/tribler <<EOF
       #!/bin/sh
