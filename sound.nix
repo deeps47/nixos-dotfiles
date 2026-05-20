@@ -14,10 +14,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    #wireplumber.enable = true; # ← REQUIRED
     wireplumber = {
       enable = true;
-      package = pkgs-stable.wireplumber;
+      #  package = pkgs-stable.wireplumber;
     };
 
     extraConfig = {
