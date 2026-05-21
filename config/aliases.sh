@@ -3,7 +3,23 @@
 # --- Simple Aliases ---
 alias btw="echo i use nixos btw"
 alias vim="nvim"
-alias nrs="sudo nixos-rebuild switch --flake path: ";
+alias nrs="sudo nixos-rebuild switch --flake path:."
+alias nrb="sudo nixos-rebuild boot --flake path:."
+alias ncg="sudo nix-collect-garbage -d"
+alias try="nix-shell -p"
+
+alias ai-up="sudo systemctl start ollama searx open-webui"
+alias ai-down="sudo systemctl stop ollama searx open-webui"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Show all files (including hidden), long listing, human-readable, grouped dirs, icons, Git info
+alias la="eza -lha --icons --group-directories-first"
+
+# Fast, compact listing with icons and colors (good for quick overview)
+alias ls="eza --icons --group-directories-first"
 
 # --- Complex Multi-line Commands (Functions) ---
 kali-vm() {
