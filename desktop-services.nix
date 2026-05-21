@@ -1,44 +1,37 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  # --- Display Manager ---
-  # Disable SDDM completely
-  services.displayManager.sddm.enable = false;
-  services.displayManager.sddm.wayland.enable = false;
+  # 1. Core Authentication Security
+  security.polkit.enable = true;
 
-  # Enable Greetd with tuigreet
+  # 2. GNOME Keyring daemon support to securely remember application credentials
+  services.gnome.gnome-keyring.enable = true;
+
+  # 3. Core system and utility packages
+  environment.systemPackages = with pkgs; [
+    hyprpolkitagent # Native Qt/QML authentication prompt
+    libsecret # Allows applications to securely query gnome-keyring
+  ];
+
+  # 4. XDG Portals for critical Wayland integrations (Screen sharing, File pickers)
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    # Sets fallback logic to avoid long application launch delays
+    config.common.default = [ "gtk" ];
+  };
+
+  # 5. Display Manager layout definition using greetd and tuigreet
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        # Launch tuigreet, show the time, and tell it to run Hyprland after you log in
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd start hyprland";
         user = "greeter";
       };
     };
   };
-
-  # --- Polkit & Portals ---
-  security.polkit.enable = true;
-
-  xdg.portal.enable = true;
-
-  # Install extra portal helpers for GTK/X11 compatibility/fallbacks
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-  ];
-
-  # --- Keyring & Security ---
-  # GNOME Keyring / libsecret available system-wide
-  environment.systemPackages = with pkgs; [
-    gnome-keyring
-    libsecret
-  ];
-
-  # Enable the GNOME Keyring daemon
-  services.gnome.gnome-keyring.enable = true;
-
-  # CRITICAL: Tell PAM to let greetd automatically unlock your GNOME Keyring when you type your password
-  security.pam.services.greetd.enableGnomeKeyring = true;
 }
