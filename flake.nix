@@ -48,6 +48,7 @@
           ./desktop-services.nix
           ./sound.nix
           ./udev-rules.nix
+          ./modules/thunar.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
