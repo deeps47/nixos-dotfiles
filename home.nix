@@ -18,6 +18,7 @@ in
     ./modules/web-apps.nix
     ./git.nix
     ./noctaliahm.nix
+    ./neovim.nix
     ./overrides/tribler.nix
   ];
 
@@ -39,10 +40,6 @@ in
   };
 
   home.packages = with pkgs; [
-    neovim
-    ripgrep
-    nil
-    nixpkgs-fmt
     nitch
     rofi
     pcmanfm
