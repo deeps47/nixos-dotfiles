@@ -1,0 +1,10 @@
+{
+  "workspace": {
+    "library": [
+      "/home/goku/nixos-dotfiles/config/hypr"
+    ]
+  },
+  "diagnostics": {
+    "globals": ["hl"]
+  }
+}
