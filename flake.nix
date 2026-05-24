@@ -50,6 +50,11 @@
           ./udev-rules.nix
           ./modules/thunar.nix
           #./llm.nix
+          {
+            nixpkgs.overlays = [
+              (import ./overlays/openldap.nix { lib = nixpkgs.lib; })
+            ];
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
