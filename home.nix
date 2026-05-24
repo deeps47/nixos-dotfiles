@@ -19,6 +19,7 @@ in
     ./git.nix
     ./noctaliahm.nix
     ./neovim.nix
+    ./testing-packages.nix
     ./overrides/tribler.nix
   ];
 
@@ -41,16 +42,12 @@ in
 
   home.packages = with pkgs; [
     nitch
-    rofi
-    pcmanfm
-    gcc
     xdg-utils
-    wl-clipboard
-    cliphist
     quickshell
-    wtype
     brave
     vscodium
+    yazi
+    discord
   ];
 
   xdg.configFile = builtins.mapAttrs
