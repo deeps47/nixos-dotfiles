@@ -1,20 +1,24 @@
 {
     "sources": [
         {
-            "enabled": false,
+            "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         {
-            "enabled": true,
+            "enabled": false,
             "name": "Custom Official Repo",
             "url": "https://github.com/deeps47/noctalia-plugins"
         }
     ],
     "states": {
-        "dd8e1f:clipper": {
+        "clipper": {
             "enabled": true,
-            "sourceUrl": "https://github.com/deeps47/noctalia-plugins"
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "screen-toolkit": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         }
     },
     "version": 2

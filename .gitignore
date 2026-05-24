@@ -12,3 +12,9 @@ config/noctalia/plugins/dd8e1f:clipper/i18n/*.json
 
 # But do NOT ignore en.json
 !config/noctalia/plugins/dd8e1f:clipper/i18n/en.json
+
+# Ignore downloaded/generated plugin contents
+config/noctalia/plugins/*
+
+# Keep the plugin manifest tracked
+!config/noctalia/plugins/plugins.json
