@@ -217,7 +217,7 @@ hl.config({
 
 mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
-require("scripts/init")
+require("/scripts/scratchpads/init")
 
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
