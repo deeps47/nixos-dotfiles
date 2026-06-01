@@ -21,6 +21,7 @@ in
     ./neovim.nix
     ./testing-packages.nix
     ./overrides/tribler.nix
+    ./programs/browsers/default.nix
   ];
 
   home.username = "goku";
@@ -44,7 +45,6 @@ in
     nitch
     xdg-utils
     quickshell
-    brave
     vscodium
     yazi
     discord
