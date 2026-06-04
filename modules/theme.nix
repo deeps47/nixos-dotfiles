@@ -49,16 +49,28 @@
   };
 
   home.sessionVariables = {
-  # Session
-  #XDG_CURRENT_DESKTOP = "Hyprland"; # only downside — need to change this when switching to niri
-  XDG_SESSION_TYPE    = "wayland";
-  GDK_BACKEND         = "wayland,x11";
+    # Wayland toolkit backends
+    GDK_BACKEND = "wayland;x11;*";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    SDL_VIDEODRIVER = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    EGL_PLATFORM = "wayland";
 
-  # Theme
-  GTK_THEME           = "Tokyonight-Dark";
-  GTK_ICON_THEME      = "Papirus-Dark";
-  XCURSOR_THEME       = "Bibata-Modern-Classic";
-  XCURSOR_SIZE        = "24";
+    # Qt theming/scaling
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+    # Cursor
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "24";
+
+    # NixOS Electron/Chromium Wayland hint
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    OZONE_PLATFORM = "wayland";
+
+    # Mozilla native Wayland
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   home.file.".icons/default/index.theme".text = ''

@@ -19,6 +19,7 @@ hl.monitor({
     mode     = "highrr",
     position = "auto",
     scale    = "auto",
+    vrr      = 2,
 })
 
 ---------------------
@@ -43,6 +44,7 @@ local clipboard   = "noctalia-shell ipc call plugin:clipper toggle"
 --
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
     hl.exec_cmd("noctalia-shell &")
     hl.exec_cmd("sleep 5 && openrgb --profile $HOME/.config/OpenRGB/white.orp")
 end)
@@ -52,10 +54,18 @@ end)
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+-- XDG session identity (compositor-specific, changes per WM)
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+-- Nvidia-specific
+hl.env("GBM_BACKEND", "nvidia-drm")
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("LIBVA_DRIVER_NAME", "nvidia")
+hl.env("__GL_GSYNC_ALLOWED", "1") -- enable G-Sync if you have a compatible monitor
+hl.env("__GL_VRR_ALLOWED", "1")   -- enable VRR/FreeSync
+hl.env("NVD_BACKEND", "direct")   -- for nvidia-vaapi-driver, better hw decode
 
 
 -----------------------
@@ -337,3 +347,6 @@ hl.window_rule({
 hl.window_rule({ match = { class = "^(zathura|org%.kde%.okular|vlc|mpv|imv|feh)$" }, workspace = "empty m", })
 -- Screen-sharing notification handling
 hl.window_rule({ match = { title = "^(.*is sharing (your screen|a window)\\.)$" }, workspace = "special silent", })
+
+-- This loads Noctalia-generated Hyprland colors.
+dofile("/home/goku/.config/hypr/noctalia/noctalia-colors.lua")
