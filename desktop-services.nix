@@ -6,6 +6,7 @@
 
   # 2. GNOME Keyring daemon support to securely remember application credentials
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   # 3. Core system and utility packages
   environment.systemPackages = with pkgs; [
