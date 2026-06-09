@@ -6,9 +6,7 @@ let
   configs = {
     hypr = "hypr";
     nvim = "nvim";
-    rofi = "rofi";
     foot = "foot";
-    waybar = "waybar";
     noctalia = "noctalia";
   };
 in

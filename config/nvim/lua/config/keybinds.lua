@@ -56,8 +56,3 @@ vim.keymap.set("n", "<leader>co", ":copen<CR>", { silent = true })
 vim.keymap.set("n", "<leader>cn", ":cnext<CR>zz")
 vim.keymap.set("n", "<leader>cp", ":cprev<CR>zz")
 vim.keymap.set("n", "<leader>li", ":checkhealth vim.lsp<CR>", { desc = "LSP Info" })
-
--- source file
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)

@@ -33,8 +33,6 @@
     ];
   };
 
-  programs.firefox.enable = true;
-
   services.hardware.openrgb.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -54,9 +52,7 @@
     wget
     foot
     kitty
-    waybar
     git
-    hyprpaper
     networkmanagerapplet
     nmgui
   ];

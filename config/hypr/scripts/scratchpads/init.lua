@@ -174,14 +174,14 @@ local get_magic_slot = make_scratchpad({
     workspace = "magic",
 })
 
-local get_notes_slot = make_scratchpad({
-    key       = "N",
-    cmd       = "obsidian",
-    class     = "obsidian",
-    workspace = "notes",
-})
+--local get_notes_slot = make_scratchpad({
+--    key       = "N",
+--    cmd       = "obsidian",
+--   class     = "obsidian",
+--    workspace = "notes",
+--})
 
 guard.setup({
     ["special:magic"] = get_magic_slot,
-    ["special:notes"] = get_notes_slot,
+    --    ["special:notes"] = get_notes_slot,
 })
